@@ -4,45 +4,75 @@
         <mat-spinner diameter="48"></mat-spinner>
     </div>
     } @else if (contract(); as c) {
+    <!-- Page header -->
+    <div class="detail-header">
+        <mat-icon>description</mat-icon>
+        <div>
+            <h2>Contract Details</h2>
+            <p>{{ c.productName }}</p>
+        </div>
+    </div>
+
     <mat-card>
-        <mat-card-header>
-            <mat-card-title>Contract Details</mat-card-title>
-            <mat-card-subtitle>{{ c.productName }}</mat-card-subtitle>
-        </mat-card-header>
         <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <span matListItemTitle>Contractor Name</span>
-                    <span matListItemLine>{{ c.contractorName }}</span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Contractor ID</span>
-                    <span matListItemLine>{{ c.contractorId }}</span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Contact Email</span>
-                    <span matListItemLine>{{ c.contactEmail || '—' }}</span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Contact Phone</span>
-                    <span matListItemLine>{{ c.contactPhone || '—' }}</span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Product Name</span>
-                    <span matListItemLine>{{ c.productName }}</span>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Contract Date</span>
-                    <span matListItemLine>{{ c.contractDate | date:'longDate' }}</span>
-                </mat-list-item>
-            </mat-list>
+            <!-- Contractor section -->
+            <div class="detail-section blue">
+                <h3 class="section-label">
+                    <mat-icon>person</mat-icon> Contractor
+                </h3>
+                <div class="detail-grid">
+                    <div class="detail-field">
+                        <span class="label">Name</span>
+                        <span class="value">{{ c.contractorName }}</span>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">ID</span>
+                        <span class="value mono">{{ c.contractorId }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact section -->
+            <div class="detail-section green">
+                <h3 class="section-label">
+                    <mat-icon>contact_mail</mat-icon> Contact
+                </h3>
+                <div class="detail-grid">
+                    <div class="detail-field">
+                        <span class="label">Email</span>
+                        <span class="value">{{ c.contactEmail || '—' }}</span>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">Phone</span>
+                        <span class="value">{{ c.contactPhone || '—' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product section -->
+            <div class="detail-section amber">
+                <h3 class="section-label">
+                    <mat-icon>shield</mat-icon> Product
+                </h3>
+                <div class="detail-grid">
+                    <div class="detail-field">
+                        <span class="label">Product Name</span>
+                        <span class="value">{{ c.productName }}</span>
+                    </div>
+                    <div class="detail-field">
+                        <span class="label">Contract Date</span>
+                        <span class="value">{{ c.contractDate | date:'longDate' }}</span>
+                    </div>
+                </div>
+            </div>
         </mat-card-content>
+
         <mat-card-actions align="end">
             <button mat-button (click)="back()">
-                <mat-icon>arrow_back</mat-icon> Back
+                <mat-icon>arrow_back</mat-icon> Back to List
             </button>
             <button mat-flat-button color="primary" (click)="edit()">
-                <mat-icon>edit</mat-icon> Edit
+                <mat-icon>edit</mat-icon> Edit Contract
             </button>
         </mat-card-actions>
     </mat-card>

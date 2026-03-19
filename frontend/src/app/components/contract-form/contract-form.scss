@@ -1,11 +1,70 @@
 .form-container {
-    padding: 24px;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
 }
 
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    background: var(--bg-section-green);
+    margin-bottom: 24px;
+
+    &.edit-mode {
+        background: var(--bg-section-amber);
+    }
+
+    mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        color: var(--text-secondary);
+    }
+
+    h2 {
+        margin: 0;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    p {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+}
+
 mat-card {
-    padding: 16px;
+    padding: 24px;
+}
+
+.section-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 8px 0 12px;
+}
+
+.field-group {
+    padding: 16px 20px 4px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+    &.contractor-section {
+        background: var(--bg-section-blue);
+    }
+
+    &.contact-section {
+        background: var(--bg-section-green);
+    }
+
+    &.product-section {
+        background: var(--bg-section-amber);
+    }
 }
 
 .full-width {
@@ -21,6 +80,8 @@ mat-card {
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
 }

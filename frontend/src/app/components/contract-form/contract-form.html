@@ -1,8 +1,15 @@
 <div class="form-container">
+    <!-- Page header -->
+    <div class="form-header" [class.edit-mode]="isEditMode()">
+        <mat-icon>{{ isEditMode() ? 'edit_note' : 'note_add' }}</mat-icon>
+        <div>
+            <h2>{{ isEditMode() ? 'Edit Contract' : 'New Contract' }}</h2>
+            <p>{{ isEditMode() ? 'Update the contract details below' : 'Fill in the details to create a new contract' }}
+            </p>
+        </div>
+    </div>
+
     <mat-card>
-        <mat-card-header>
-            <mat-card-title>{{ isEditMode() ? 'Edit Contract' : 'New Contract' }}</mat-card-title>
-        </mat-card-header>
         <mat-card-content>
             @if (loading()) {
             <div class="spinner-container">
@@ -10,47 +17,64 @@
             </div>
             } @else {
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Contractor Name</mat-label>
-                    <input matInput formControlName="contractorName" placeholder="Full name">
-                    @if (form.get('contractorName')?.hasError('required')) {
-                    <mat-error>Contractor name is required</mat-error>
-                    }
-                </mat-form-field>
+                <h3 class="section-label">Contractor Information</h3>
+                <div class="field-group contractor-section">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Contractor Name</mat-label>
+                        <mat-icon matPrefix>person</mat-icon>
+                        <input matInput formControlName="contractorName" placeholder="Full name">
+                        @if (form.get('contractorName')?.hasError('required')) {
+                        <mat-error>Contractor name is required</mat-error>
+                        }
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Contractor ID</mat-label>
-                    <input matInput formControlName="contractorId" placeholder="National ID or equivalent">
-                    @if (form.get('contractorId')?.hasError('required')) {
-                    <mat-error>Contractor ID is required</mat-error>
-                    }
-                </mat-form-field>
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Contractor ID</mat-label>
+                        <mat-icon matPrefix>badge</mat-icon>
+                        <input matInput formControlName="contractorId" placeholder="National ID or equivalent">
+                        @if (form.get('contractorId')?.hasError('required')) {
+                        <mat-error>Contractor ID is required</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Contact Email</mat-label>
-                    <input matInput formControlName="contactEmail" type="email" placeholder="email@example.com">
-                    @if (form.get('contactEmail')?.hasError('email')) {
-                    <mat-error>Invalid email format</mat-error>
-                    }
-                </mat-form-field>
+                <h3 class="section-label">Contact Details</h3>
+                <div class="field-group contact-section">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Contact Email</mat-label>
+                        <mat-icon matPrefix>email</mat-icon>
+                        <input matInput formControlName="contactEmail" type="email" placeholder="email@example.com">
+                        @if (form.get('contactEmail')?.hasError('email')) {
+                        <mat-error>Invalid email format</mat-error>
+                        }
+                    </mat-form-field>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Contact Phone</mat-label>
-                    <input matInput formControlName="contactPhone" placeholder="+1 234 567 890">
-                </mat-form-field>
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Contact Phone</mat-label>
+                        <mat-icon matPrefix>phone</mat-icon>
+                        <input matInput formControlName="contactPhone" placeholder="+1 234 567 890">
+                    </mat-form-field>
+                </div>
 
-                <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Product Name</mat-label>
-                    <input matInput formControlName="productName" placeholder="Insurance product name">
-                    @if (form.get('productName')?.hasError('required')) {
-                    <mat-error>Product name is required</mat-error>
-                    }
-                </mat-form-field>
+                <h3 class="section-label">Product</h3>
+                <div class="field-group product-section">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Product Name</mat-label>
+                        <mat-icon matPrefix>shield</mat-icon>
+                        <input matInput formControlName="productName" placeholder="Insurance product name">
+                        @if (form.get('productName')?.hasError('required')) {
+                        <mat-error>Product name is required</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
 
                 <div class="form-actions">
-                    <button mat-button type="button" (click)="cancel()">Cancel</button>
+                    <button mat-button type="button" (click)="cancel()">
+                        <mat-icon>close</mat-icon> Cancel
+                    </button>
                     <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loading()">
-                        {{ isEditMode() ? 'Update' : 'Create' }}
+                        <mat-icon>{{ isEditMode() ? 'save' : 'add' }}</mat-icon>
+                        {{ isEditMode() ? 'Update Contract' : 'Create Contract' }}
                     </button>
                 </div>
             </form>

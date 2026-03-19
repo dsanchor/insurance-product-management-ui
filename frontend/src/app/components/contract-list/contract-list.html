@@ -4,8 +4,12 @@
         <mat-spinner diameter="48"></mat-spinner>
     </div>
     } @else {
-    <div class="toolbar-row">
-        <h2>Product Contracts</h2>
+    <!-- Header section -->
+    <div class="page-header">
+        <div class="header-text">
+            <h2>Product Contracts</h2>
+            <p class="subtitle">Manage insurance product sign-up contracts</p>
+        </div>
         <button mat-fab extended color="primary" (click)="createContract()">
             <mat-icon>add</mat-icon>
             New Contract
@@ -14,25 +18,45 @@
 
     @if (contracts().length === 0) {
     <div class="empty-state">
-        <mat-icon class="empty-icon">description</mat-icon>
-        <p>No contracts found. Create your first contract to get started.</p>
+        <div class="empty-card">
+            <mat-icon class="empty-icon">description</mat-icon>
+            <h3>No contracts yet</h3>
+            <p>Create your first contract to get started.</p>
+            <button mat-flat-button color="primary" (click)="createContract()">
+                <mat-icon>add</mat-icon> Create Contract
+            </button>
+        </div>
     </div>
     } @else {
-    <div class="table-container mat-elevation-z2">
+    <!-- Stats summary -->
+    <div class="stats-row">
+        <div class="stat-chip blue">
+            <mat-icon>folder</mat-icon>
+            <span>{{ contracts().length }} Total Contracts</span>
+        </div>
+    </div>
+
+    <div class="table-container">
         <table mat-table [dataSource]="contracts()">
             <ng-container matColumnDef="contractorName">
                 <th mat-header-cell *matHeaderCellDef>Contractor Name</th>
-                <td mat-cell *matCellDef="let contract">{{ contract.contractorName }}</td>
+                <td mat-cell *matCellDef="let contract">
+                    <span class="cell-primary">{{ contract.contractorName }}</span>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="contractorId">
                 <th mat-header-cell *matHeaderCellDef>Contractor ID</th>
-                <td mat-cell *matCellDef="let contract">{{ contract.contractorId }}</td>
+                <td mat-cell *matCellDef="let contract">
+                    <span class="cell-mono">{{ contract.contractorId }}</span>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="productName">
                 <th mat-header-cell *matHeaderCellDef>Product</th>
-                <td mat-cell *matCellDef="let contract">{{ contract.productName }}</td>
+                <td mat-cell *matCellDef="let contract">
+                    <span class="product-badge">{{ contract.productName }}</span>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="contractDate">
@@ -41,17 +65,19 @@
             </ng-container>
 
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let contract">
-                    <button mat-icon-button matTooltip="View" (click)="viewContract(contract.id)">
-                        <mat-icon>visibility</mat-icon>
-                    </button>
-                    <button mat-icon-button matTooltip="Edit" (click)="editContract(contract.id)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button matTooltip="Delete" color="warn" (click)="deleteContract(contract)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                    <div class="action-buttons">
+                        <button mat-icon-button matTooltip="View" (click)="viewContract(contract.id)">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Edit" (click)="editContract(contract.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Delete" color="warn" (click)="deleteContract(contract)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
                 </td>
             </ng-container>
 

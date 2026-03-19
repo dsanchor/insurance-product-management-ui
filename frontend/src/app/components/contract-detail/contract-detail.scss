@@ -1,15 +1,116 @@
 .detail-container {
-    padding: 24px;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    background: var(--bg-section-blue);
+    margin-bottom: 24px;
+
+    mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        color: var(--text-secondary);
+    }
+
+    h2 {
+        margin: 0;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    p {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+}
+
+mat-card {
+    padding: 24px;
+}
+
+.detail-section {
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+
+    &.blue {
+        background: var(--bg-section-blue);
+    }
+
+    &.green {
+        background: var(--bg-section-green);
+    }
+
+    &.amber {
+        background: var(--bg-section-amber);
+    }
+
+    .section-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 12px;
+
+        mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detail-field {
+    .label {
+        display: block;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+
+    .value {
+        display: block;
+        font-size: 15px;
+        color: var(--text-primary);
+        font-weight: 400;
+
+        &.mono {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+        }
+    }
 }
 
 .spinner-container {
     display: flex;
     justify-content: center;
-    padding: 64px;
+    padding: 80px;
 }
 
-mat-card {
-    padding: 16px;
+mat-card-actions {
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
 }
