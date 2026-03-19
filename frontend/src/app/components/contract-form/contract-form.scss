@@ -1,0 +1,26 @@
+.form-container {
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+mat-card {
+    padding: 16px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}

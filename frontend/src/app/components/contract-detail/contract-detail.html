@@ -1,0 +1,50 @@
+<div class="detail-container">
+    @if (loading()) {
+    <div class="spinner-container">
+        <mat-spinner diameter="48"></mat-spinner>
+    </div>
+    } @else if (contract(); as c) {
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Contract Details</mat-card-title>
+            <mat-card-subtitle>{{ c.productName }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <span matListItemTitle>Contractor Name</span>
+                    <span matListItemLine>{{ c.contractorName }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Contractor ID</span>
+                    <span matListItemLine>{{ c.contractorId }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Contact Email</span>
+                    <span matListItemLine>{{ c.contactEmail || '—' }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Contact Phone</span>
+                    <span matListItemLine>{{ c.contactPhone || '—' }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Product Name</span>
+                    <span matListItemLine>{{ c.productName }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span matListItemTitle>Contract Date</span>
+                    <span matListItemLine>{{ c.contractDate | date:'longDate' }}</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button (click)="back()">
+                <mat-icon>arrow_back</mat-icon> Back
+            </button>
+            <button mat-flat-button color="primary" (click)="edit()">
+                <mat-icon>edit</mat-icon> Edit
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    }
+</div>
